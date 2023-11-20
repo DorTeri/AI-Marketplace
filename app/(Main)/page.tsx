@@ -8,6 +8,7 @@ import About from "@/components/Route/About"
 import PromptCard from "@/components/Prompts/PromptCard"
 import BestSellers from "@/components/Shop/BestSellers"
 import Future from "@/components/Route/Future"
+import Partners from "@/components/Route/Partners"
 import { styles } from "@/utils/styles"
 
 type Props = {}
@@ -60,6 +61,7 @@ const Page = (props: Props) => {
           <br />
           <BestSellers />
           <Future />
+          <Partners />
         </div>
       </div>
     </div>
