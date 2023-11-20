@@ -6,6 +6,7 @@ import Image from "next/image"
 import shape from "@/public/Assets/shape.png"
 import About from "@/components/Route/About"
 import PromptCard from "@/components/Prompts/PromptCard"
+import BestSellers from "@/components/Shop/BestSellers"
 import { styles } from "@/utils/styles"
 
 type Props = {}
@@ -47,7 +48,16 @@ const Page = (props: Props) => {
           </h1>
           <div className="flex flex-wrap">
             <PromptCard />
+            <PromptCard />
+            <PromptCard />
+            <PromptCard />
+            <PromptCard />
+            <PromptCard />
+            <PromptCard />
+            <PromptCard />
           </div>
+          <br />
+          <BestSellers />
         </div>
       </div>
     </div>
