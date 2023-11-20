@@ -1,13 +1,24 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Navigation from './Navigation'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { CgProfile } from 'react-icons/cg'
+import { FaBars } from "react-icons/fa"
 
 type Props = {
     activeItem: number,
 }
 
-const Header = ({activeItem}: Props) => {
+const Header = ({ activeItem }: Props) => {
     const [active, setActive] = useState(false)
+    const [open, setOpen] = useState(false)
+
+    const handleClose = (e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.id === 'screen') {
+            setOpen(!open)
+        }
+    }
 
     if (typeof window !== 'undefined') {
         window.addEventListener('scroll', () => {
@@ -32,6 +43,44 @@ const Header = ({activeItem}: Props) => {
                 <div className='flex'>
                     <Navigation activeItem={activeItem} />
                 </div>
+                <div className='flex items-center ml-10'>
+                    <AiOutlineSearch className="text-[25px] mr-5 cursor-pointer" />
+                    {/* {Todo Auth} */}
+                    <Link href="/sign-in">
+                        <CgProfile className="text-[25px] cursor-pointer" />
+                    </Link>
+                </div>
+            </div>
+            {/* {Todo model} */}
+
+            {/* {mobile screen} */}
+            <div className="w-full md:hidden flex items-center justify-between">
+                <div>
+                    <Link href={"/"}>
+                        <h1 className='font-Inter text-3xl cursor-pointer'>
+                            <span className='text-[#64ff4c]'>Bit</span>prompt
+                        </h1>
+                    </Link>
+                </div>
+                <div>
+                    <FaBars className="text-2xl cursor-pointer"
+                        onClick={() => setOpen(!open)} />
+                </div>
+                {
+                    open && (
+                        <div className="fixed md:hidden w-full h-screen top-0 left-0 z-[99999] bg-[unset]"
+                            onClick={handleClose}
+                            id='screen'
+                        >
+                            <div className="fixed bg-black h-screen top-0 right-0 w-[60%] z-[9999]">
+                                <div className="mt-20 p-5">
+                                    <Navigation activeItem={activeItem} />
+                                    {/* {Todo} */}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )
