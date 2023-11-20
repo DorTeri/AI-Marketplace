@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react"
 import Header from "@/components/Header"
 import Hero from "@/components/Route/Hero"
+import Image from "next/image"
+import shape from "@/public/Assets/shape.png"
+import About from "@/components/Route/About"
 
 type Props = {}
 
@@ -22,8 +25,21 @@ const Page = (props: Props) => {
 
   return (
     <div>
-      <Header activeItem={0} />
-      <Hero />
+      <div className="banner">
+        <Header activeItem={0} />
+        <Hero />
+      </div>
+      <Image
+        src={shape}
+        width={120}
+        height={120}
+        alt="shape"
+        className="absolute right-[-30px]"
+      />
+      <br />
+      <div className="w-[95%] md:w-[90%] xl:w-[80%] 2xl:w-[75%] m-auto">
+        <About />
+      </div>
     </div>
   )
 }
