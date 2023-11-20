@@ -1,8 +1,11 @@
 import { styles } from '@/utils/styles';
+import { useClerk } from '@clerk/nextjs';
 import { User } from '@clerk/nextjs/server'
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 import Link from "next/link"
+import { AiOutlineLogout } from 'react-icons/ai';
 import { TbSwitchVertical } from "react-icons/tb"
+import { useRouter } from "next/navigation"
 
 type Props = {
     user: User | null;
@@ -12,6 +15,14 @@ type Props = {
 }
 
 const DropDown = ({ user, setOpen, handleProfile, isSellerExist }: Props) => {
+    const { signOut } = useClerk()
+    const router = useRouter()
+
+    const handleLogout = async () => {
+        await signOut();
+        router.push("/sign-in");
+    }
+
     return (
         <Dropdown placement='bottom-start'>
             <DropdownTrigger>
@@ -44,8 +55,18 @@ const DropDown = ({ user, setOpen, handleProfile, isSellerExist }: Props) => {
                         <span className={`${styles.label} text-black text-[16px] pl-2`}>
                             Switching to Seller
                         </span>
-                        <TbSwitchVertical />
+                        <TbSwitchVertical className="text-2xl ml-2 text-black" />
                     </Link>
+                </DropdownItem>
+                <DropdownItem
+                    onClick={handleLogout}
+                >
+                    <div className='flex items-center w-full'>
+                        <AiOutlineLogout className="text-2xl ml-2 text-black" />
+                        <span className={`${styles.label} text-black text-[16px] pl-2`}>
+                            Log out
+                        </span>
+                    </div>
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>
