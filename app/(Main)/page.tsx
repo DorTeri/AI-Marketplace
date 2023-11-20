@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react"
-import Header from "@/components/Header"
+import Header from "@/components/Layout/Header"
 import Hero from "@/components/Route/Hero"
 import Image from "next/image"
 import shape from "@/public/Assets/shape.png"
@@ -10,7 +10,9 @@ import BestSellers from "@/components/Shop/BestSellers"
 import Future from "@/components/Route/Future"
 import Partners from "@/components/Route/Partners"
 import SellersBanner from "@/components/Shop/SellersBanner"
+import Footer from "@/components/Layout/Footer"
 import { styles } from "@/utils/styles"
+import { Divider } from "@nextui-org/react"
 
 type Props = {}
 
@@ -64,6 +66,10 @@ const Page = (props: Props) => {
           <Future />
           <Partners />
           <SellersBanner />
+          <br />
+          <br />
+          <Divider className="bg-[#ffffff23]" />
+          <Footer />
         </div>
       </div>
     </div>
