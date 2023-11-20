@@ -1,7 +1,8 @@
 import { styles } from '@/utils/styles';
 import { User } from '@clerk/nextjs/server'
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
-import React from 'react'
+import Link from "next/link"
+import { TbSwitchVertical } from "react-icons/tb"
 
 type Props = {
     user: User | null;
@@ -37,6 +38,14 @@ const DropDown = ({ user, setOpen, handleProfile, isSellerExist }: Props) => {
                             My profile
                         </span>
                     </div>
+                </DropdownItem>
+                <DropdownItem className={`${!isSellerExist && 'hidden'}`}>
+                    <Link href={"/my-shop"} className='flex w-full items-center'>
+                        <span className={`${styles.label} text-black text-[16px] pl-2`}>
+                            Switching to Seller
+                        </span>
+                        <TbSwitchVertical />
+                    </Link>
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>
