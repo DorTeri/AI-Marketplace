@@ -7,6 +7,11 @@ import image2 from "@/public/Assets/image2.png"
 import image3 from "@/public/Assets/image3.png"
 import image4 from "@/public/Assets/image4.png"
 import image5 from "@/public/Assets/image5.png"
+import image6 from "@/public/Assets/image6.png"
+import image7 from "@/public/Assets/image7.png"
+import image8 from "@/public/Assets/image8.png"
+import image9 from "@/public/Assets/image9.png"
+import image10 from "@/public/Assets/image10.png"
 
 
 type Props = {}
@@ -28,6 +33,24 @@ const rowOneImages = [
         src: image5,
     },
 ]
+
+const rowTwoImages = [
+    {
+      src: image6,
+    },
+    {
+      src: image7,
+    },
+    {
+      src: image8,
+    },
+    {
+      src: image9,
+    },
+    {
+      src: image10,
+    },
+  ];
 
 const Hero = (props: Props) => {
     return (
@@ -63,7 +86,7 @@ const Hero = (props: Props) => {
                             ))}
                         </Marquee>
                         <Marquee>
-                            {rowOneImages.map((i, index) => (
+                            {rowTwoImages.map((i, index) => (
                                 <Image
                                     src={i.src}
                                     key={index}
