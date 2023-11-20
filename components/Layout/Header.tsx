@@ -6,21 +6,28 @@ import { CgProfile } from 'react-icons/cg'
 import { FaBars } from "react-icons/fa"
 import { UserButton } from '@clerk/nextjs'
 import { User } from '@clerk/nextjs/server'
+import DropDown from "./DropDown"
 
 type Props = {
     activeItem: number,
     user: User | null
 }
 
-const Header = ({user , activeItem }: Props) => {
+const Header = ({ user, activeItem }: Props) => {
     const [active, setActive] = useState(false)
     const [open, setOpen] = useState(false)
+    const [activeProfile, setActiveProfile] = useState(false)
+    const [isSellerExist, setIsSellerExist] = useState(false)
 
     const handleClose = (e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
         if (target.id === 'screen') {
             setOpen(!open)
         }
+    }
+
+    const handleProfile = () => {
+        setActiveProfile(!activeProfile)
     }
 
     if (typeof window !== 'undefined') {
@@ -48,10 +55,22 @@ const Header = ({user , activeItem }: Props) => {
                 </div>
                 <div className='flex items-center ml-10'>
                     <AiOutlineSearch className="text-[25px] mr-5 cursor-pointer" />
-                    {/* <Link href="/sign-in">
-                        <CgProfile className="text-[25px] cursor-pointer" />
-                    </Link> */}
-                    <UserButton afterSignOutUrl='/'/>
+                    {
+                        user ? (
+                            <div>
+                                <DropDown
+                                    user={user}
+                                    setOpen={setOpen}
+                                    handleProfile={handleProfile}
+                                    isSellerExist={isSellerExist}
+                                />
+                            </div>
+                        ) : (
+                            <Link href="/sign-in">
+                                <CgProfile className="text-[25px] cursor-pointer" />
+                            </Link>
+                        )
+                    }
                 </div>
             </div>
             {/* {Todo model} */}

@@ -14,6 +14,7 @@ import Footer from "@/components/Layout/Footer"
 import { styles } from "@/utils/styles"
 import { Divider } from "@nextui-org/react"
 import axios from "axios"
+import Loader from "@/utils/Loader"
 
 type Props = {}
 
@@ -32,7 +33,7 @@ const Page = (props: Props) => {
   useEffect(() => {
     setLoading(true)
     axios.get("/api/me").then((res) => {
-      setUser(res.data)
+      setUser(res.data.user)
       setLoading(false)
     }).catch((error) => {
       console.log(error)
@@ -51,6 +52,7 @@ const Page = (props: Props) => {
       {
         loading ? (
           <>
+          <Loader />
           </>
         ) : (
           <div>
