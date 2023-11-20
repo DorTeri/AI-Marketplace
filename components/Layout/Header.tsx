@@ -4,12 +4,15 @@ import Navigation from './Navigation'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
 import { FaBars } from "react-icons/fa"
+import { UserButton } from '@clerk/nextjs'
+import { User } from '@clerk/nextjs/server'
 
 type Props = {
     activeItem: number,
+    user: User | null
 }
 
-const Header = ({ activeItem }: Props) => {
+const Header = ({user , activeItem }: Props) => {
     const [active, setActive] = useState(false)
     const [open, setOpen] = useState(false)
 
@@ -45,10 +48,10 @@ const Header = ({ activeItem }: Props) => {
                 </div>
                 <div className='flex items-center ml-10'>
                     <AiOutlineSearch className="text-[25px] mr-5 cursor-pointer" />
-                    {/* {Todo Auth} */}
-                    <Link href="/sign-in">
+                    {/* <Link href="/sign-in">
                         <CgProfile className="text-[25px] cursor-pointer" />
-                    </Link>
+                    </Link> */}
+                    <UserButton afterSignOutUrl='/'/>
                 </div>
             </div>
             {/* {Todo model} */}
