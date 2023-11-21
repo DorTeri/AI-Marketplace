@@ -3,7 +3,9 @@
 import { styles } from "@/utils/styles"
 import { useUser } from "@clerk/nextjs"
 import { Button, Input, Textarea } from "@nextui-org/react"
+import axios from "axios"
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 type Props = {}
 
@@ -20,6 +22,7 @@ const Page = (props: Props) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setLoading(true)
         if (user) {
             const data = {
                 name: shopData.name,
@@ -29,7 +32,25 @@ const Page = (props: Props) => {
                 userId: user?.id,
             }
 
-            
+            await axios.post("/api/create-shop", data).then((res) => {
+                setLoading(false);
+                toast.success("Shop created successfully")
+                setShopData({
+                    name: "",
+                    description: "",
+                    shopProductsType: "",
+                    avatar: "",
+                });
+            }).catch((error) => {
+                setLoading(false)
+                toast.error(error.response.data);
+                setShopData({
+                    name: "",
+                    description: "",
+                    shopProductsType: "",
+                    avatar: "",
+                });
+            })
         }
     }
 
