@@ -23,6 +23,7 @@ const Page = (props: Props) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [isSellerExist, setIsSellerExist] = useState(false)
 
   useEffect(() => {
     if (!isMounted) {
@@ -34,6 +35,7 @@ const Page = (props: Props) => {
     setLoading(true)
     axios.get("/api/me").then((res) => {
       setUser(res.data.user)
+      setIsSellerExist(res.data.shop ? true : false)
       setLoading(false)
     }).catch((error) => {
       console.log(error)
@@ -52,12 +54,12 @@ const Page = (props: Props) => {
       {
         loading ? (
           <>
-          <Loader />
+            <Loader />
           </>
         ) : (
           <div>
             <div className="banner">
-              <Header activeItem={0} user={user} />
+              <Header activeItem={0} user={user} isSellerExist={isSellerExist} />
               <Hero />
             </div>
             <Image

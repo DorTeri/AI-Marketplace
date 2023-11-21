@@ -11,14 +11,14 @@ import DropDown from "./DropDown"
 
 type Props = {
     activeItem: number,
-    user: User | null
+    user: User | null,
+    isSellerExist: boolean
 }
 
-const Header = ({ user, activeItem }: Props) => {
+const Header = ({ user, activeItem , isSellerExist }: Props) => {
     const [active, setActive] = useState(false)
     const [open, setOpen] = useState(false)
     const [activeProfile, setActiveProfile] = useState(false)
-    const [isSellerExist, setIsSellerExist] = useState(false)
 
     const handleClose = (e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
