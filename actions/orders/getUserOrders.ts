@@ -13,7 +13,8 @@ export const getUserOrders = async () => {
             include: {
                 prompt: {
                     include: {
-                        promptUrl: true
+                        promptUrl: true,
+                        reviews: true,
                     }
                 }
             }

@@ -10,7 +10,7 @@ const navItems = [
         href: "/"
     },
     {
-        title: "About us",
+        title: "About",
         href: "/about"
     },
     {
@@ -18,7 +18,7 @@ const navItems = [
         href: "/marketplace"
     },
     {
-        title: "Contact Us",
+        title: "Contact",
         href: "/contact"
     },
     {
