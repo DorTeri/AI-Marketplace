@@ -8,7 +8,15 @@ import { useEffect, useState } from "react"
 import PromptDetails from "@/components/Prompts/PromptDetails/PromptDetails"
 
 
-const PromptDetailsPage = ({ user, isSellerExist }: { user: User | undefined, isSellerExist: boolean }) => {
+const PromptDetailsPage = ({
+    user,
+    isSellerExist,
+    promptData
+}: {
+    user: User | undefined,
+    isSellerExist: boolean,
+    promptData: any
+}) => {
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
@@ -33,7 +41,7 @@ const PromptDetailsPage = ({ user, isSellerExist }: { user: User | undefined, is
             </div>
             <div>
                 <div className="w-[95%] md:w-[80%] xl:w-[85%] 2xl:w-[80%] m-auto">
-                    <PromptDetails />
+                    <PromptDetails promptData={promptData}/>
                     <Divider className="bg-[#ffffff14] mt-5" />
                     <Footer />
                 </div>

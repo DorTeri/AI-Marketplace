@@ -1,16 +1,17 @@
 import SellersBanner from '@/components/Shop/SellersBanner'
 import { styles } from '@/utils/styles'
 import PromptDetailsCard from "./PromptDetailsCard"
+import PromptInformation from "./PromptInformation"
 
 type Props = {}
 
-const PromptDetails = (props: Props) => {
+const PromptDetails = ({ promptData }: { promptData: any }) => {
     return (
         <div>
-            <PromptDetailsCard />
+            <PromptDetailsCard promptData={promptData} />
             <br />
             <br />
-            {/* {PromptInformation} */}
+            <PromptInformation promptData={promptData} />
             <br />
             <h1 className={`${styles.heading} px-2 pb-2`}>
                 Related Prompts

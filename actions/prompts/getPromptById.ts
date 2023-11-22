@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prismaDb"
 
-export async function getPromptById(promptId: string) {
+export async function getPromptById(promptId: any) {
     try {
         const prompt = await prisma.prompts.findUnique({
             include: {
