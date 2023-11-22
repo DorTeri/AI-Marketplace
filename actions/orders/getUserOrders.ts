@@ -11,7 +11,11 @@ export const getUserOrders = async () => {
                 userId: user?.id
             },
             include: {
-                prompt: true
+                prompt: {
+                    include: {
+                        promptUrl: true
+                    }
+                }
             }
         })
 

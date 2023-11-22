@@ -4,6 +4,8 @@ import { format } from "timeago.js"
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import { Box } from '@mui/material'
+import { PiDownloadDuotone } from "react-icons/pi"
+import { VscPreview } from "react-icons/vsc"
 
 type Props = {
     data: any
@@ -16,10 +18,18 @@ const UserAllOrders = ({ data }: Props) => {
         { field: "name", headerName: "Prompts Title", flex: 0.8 },
         { field: "price", headerName: "Prompts Price", flex: 0.5 },
         {
-            field: "download", headerName: "Download Source Code", flex: 0.5, renderCell: (params: any) => {
+            field: "download", headerName: "Download Source Code", flex: 0.5,
+            renderCell: (params: any) => {
+                const sourceCodeFiles = params.row.download
                 return (
-                    <div className=''>
-
+                    <div className='w-[90%] flex justify-center'>
+                        {
+                            sourceCodeFiles && sourceCodeFiles.map((file: any) => (
+                                <a href={file.url} key={file.url} download>
+                                    <PiDownloadDuotone className="text-2xl cursor-pointer text-white" />
+                                </a>
+                            ))
+                        }
                     </div>
                 )
             }
@@ -29,6 +39,18 @@ const UserAllOrders = ({ data }: Props) => {
             headerName: "Ordered At",
             flex: 0.5,
         },
+        {
+            field: "Review",
+            headerName: "Give one review",
+            flex: 0.5,
+            renderCell: (params: any) => {
+                return (
+                    <div className='w-[90%] flex justify-center'>
+                        <VscPreview className="text-2xl cursor-pointer text-white" />
+                    </div>
+                )
+            }
+        },
     ];
 
     const rows: any = [];
@@ -36,7 +58,7 @@ const UserAllOrders = ({ data }: Props) => {
     data && data.forEach((item: any) => rows.push({
         id: item.id,
         name: item.prompt.name,
-        price: "$US" + item.prompt.price,
+        price: "$US " + item.prompt.price,
         download: item.prompt.sourceCode,
         OrderedAt: format(item.createdAt)
     }))
@@ -49,57 +71,57 @@ const UserAllOrders = ({ data }: Props) => {
             <br />
             <br />
             <Box m="20px">
-                        <Box
-                            m="40px 0 0 0"
-                            height={"80vh"}
-                            sx={{
-                                "& .MuiDataGrid-root": {
-                                    border: "none",
-                                    outline: "none",
-                                },
-                                "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-                                    color: "#fff",
-                                },
-                                "& .MuiDataGrid-sortIcon": {
-                                    color: "#fff",
-                                },
-                                "& .MuiDataGrid-row": {
-                                    color: "#fff",
-                                    borderBottom: "1px solid #ffffff30!important",
-                                },
-                                "& .MuiTablePagination-root": {
-                                    color: "#fff",
-                                },
-                                "& .MuiDataGrid-cell": {
-                                    borderBottom: "none!important",
-                                },
-                                "& .name-column--cell": {
-                                    color: "#fff",
-                                },
-                                "& .MuiDataGrid-columnHeaders": {
-                                    backgroundColor: "#3e4396",
-                                    borderBottom: "none",
-                                    color: "#fff",
-                                },
-                                "& .MuiDataGrid-virtualScroller": {
-                                    backgroundColor: "#1F2A40",
-                                },
-                                "& .MuiDataGrid-footerContainer": {
-                                    color: "dark",
-                                    borderTop: "none",
-                                    backgroundColor: "#3e4396",
-                                },
-                                "& .MuiCheckbox-root": {
-                                    color: `#b7ebde !important`,
-                                },
-                                "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                                    color: `#fff !important`,
-                                },
-                            }}
-                        >
-                            <DataGrid rows={rows} columns={columns} />
-                        </Box>
-                    </Box>
+                <Box
+                    m="40px 0 0 0"
+                    height={"80vh"}
+                    sx={{
+                        "& .MuiDataGrid-root": {
+                            border: "none",
+                            outline: "none",
+                        },
+                        "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                            color: "#fff",
+                        },
+                        "& .MuiDataGrid-sortIcon": {
+                            color: "#fff",
+                        },
+                        "& .MuiDataGrid-row": {
+                            color: "#fff",
+                            borderBottom: "1px solid #ffffff30!important",
+                        },
+                        "& .MuiTablePagination-root": {
+                            color: "#fff",
+                        },
+                        "& .MuiDataGrid-cell": {
+                            borderBottom: "none!important",
+                        },
+                        "& .name-column--cell": {
+                            color: "#fff",
+                        },
+                        "& .MuiDataGrid-columnHeaders": {
+                            backgroundColor: "#3e4396",
+                            borderBottom: "none",
+                            color: "#fff",
+                        },
+                        "& .MuiDataGrid-virtualScroller": {
+                            backgroundColor: "#1F2A40",
+                        },
+                        "& .MuiDataGrid-footerContainer": {
+                            color: "dark",
+                            borderTop: "none",
+                            backgroundColor: "#3e4396",
+                        },
+                        "& .MuiCheckbox-root": {
+                            color: `#b7ebde !important`,
+                        },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                            color: `#fff !important`,
+                        },
+                    }}
+                >
+                    <DataGrid checkboxSelection rows={rows} columns={columns} />
+                </Box>
+            </Box>
         </div>
     )
 }
