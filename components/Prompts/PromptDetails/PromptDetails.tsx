@@ -2,10 +2,11 @@ import SellersBanner from '@/components/Shop/SellersBanner'
 import { styles } from '@/utils/styles'
 import PromptDetailsCard from "./PromptDetailsCard"
 import PromptInformation from "./PromptInformation"
+import PromptCard from '../PromptCard'
 
 type Props = {}
 
-const PromptDetails = ({ promptData }: { promptData: any }) => {
+const PromptDetails = ({ promptData, relatedPrompts }: { promptData: any, relatedPrompts: any }) => {
     return (
         <div>
             <PromptDetailsCard promptData={promptData} />
@@ -17,8 +18,19 @@ const PromptDetails = ({ promptData }: { promptData: any }) => {
                 Related Prompts
             </h1>
             <div className="flex flex-wrap">
-                {/* PromptCard */}
+                {
+                    relatedPrompts && relatedPrompts.map((prompt: any) => (
+                        <PromptCard prompt={prompt} key={prompt} />
+                    ))
+                }
             </div>
+            {
+                relatedPrompts?.length === 0 && (
+                    <p className={`${styles.label} text-center block my-5`}>
+                        No prompts found with this category!
+                    </p>
+                )
+            }
             <br />
             <br />
             <SellersBanner />

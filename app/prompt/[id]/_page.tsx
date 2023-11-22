@@ -11,11 +11,13 @@ import PromptDetails from "@/components/Prompts/PromptDetails/PromptDetails"
 const PromptDetailsPage = ({
     user,
     isSellerExist,
-    promptData
+    promptData,
+    relatedPrompts,
 }: {
     user: User | undefined,
     isSellerExist: boolean,
-    promptData: any
+    promptData: any,
+    relatedPrompts: any
 }) => {
     const [isMounted, setIsMounted] = useState(false)
 
@@ -41,7 +43,7 @@ const PromptDetailsPage = ({
             </div>
             <div>
                 <div className="w-[95%] md:w-[80%] xl:w-[85%] 2xl:w-[80%] m-auto">
-                    <PromptDetails promptData={promptData}/>
+                    <PromptDetails promptData={promptData} relatedPrompts={relatedPrompts} />
                     <Divider className="bg-[#ffffff14] mt-5" />
                     <Footer />
                 </div>
