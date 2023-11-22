@@ -1,3 +1,4 @@
+"use server"
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 // send stripe publishable key
@@ -11,7 +12,7 @@ export const stripePublishableKey = () => {
 
 export const stripePaymentIntent = async ({ amount }: { amount: Number }) => {
     try {
-        const paymentIntent = await stripe.paymentIntent.create({
+        const paymentIntent = await stripe.paymentIntents.create({
             amount: amount,
             currency: "USD",
             metadata: {
@@ -20,7 +21,7 @@ export const stripePaymentIntent = async ({ amount }: { amount: Number }) => {
             automatic_payment_methods: {
                 enabled: true
             },
-        })
+        })        
 
         return paymentIntent
     } catch (error) {

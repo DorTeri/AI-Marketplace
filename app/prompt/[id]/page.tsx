@@ -12,7 +12,7 @@ const Page = async ({ params }: { params: any }) => {
 
   const relatedPrompts = relatedPromptsData && relatedPromptsData.filter((prompt) => prompt.id !== promptData?.id)
 
-  const publishableKey = await stripePublishableKey()!;
+  const publishableKey = await stripePublishableKey()!;  
 
   return (
     <div>

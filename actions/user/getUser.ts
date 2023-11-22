@@ -16,7 +16,7 @@ export async function getUser() {
             }
         })
 
-        return { user, shop };
+        return JSON.parse(JSON.stringify({ user, shop }));
     } catch (error) {
         console.log('load user error', error)
     }

@@ -51,6 +51,7 @@ const PromptDetailsPage = ({
     }
 
     return (
+        
         <div>
             <div className="shop-banner">
                 <Header
