@@ -9,8 +9,12 @@ import { IoCloseOutline } from "react-icons/io5";
 
 const PromptDetailsCard = ({
   promptData,
+  stripePromise,
+  clientSecret
 }: {
   promptData: any;
+  stripePromise: any;
+  clientSecret: string
 }) => {
   const [activeImage, setactiveImage] = useState(promptData?.images[0]?.url);
   const [open, setOpen] = useState(false);

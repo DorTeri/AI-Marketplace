@@ -6,10 +6,20 @@ import PromptCard from '../PromptCard'
 
 type Props = {}
 
-const PromptDetails = ({ promptData, relatedPrompts }: { promptData: any, relatedPrompts: any }) => {
+const PromptDetails = ({
+    promptData,
+    relatedPrompts,
+    clientSecret,
+    stripePromise
+}: {
+    promptData: any;
+    relatedPrompts: any;
+    clientSecret: string;
+    stripePromise: any;
+}) => {
     return (
         <div>
-            <PromptDetailsCard promptData={promptData} />
+            <PromptDetailsCard promptData={promptData} clientSecret={clientSecret} stripePromise={stripePromise} />
             <br />
             <br />
             <PromptInformation promptData={promptData} />
