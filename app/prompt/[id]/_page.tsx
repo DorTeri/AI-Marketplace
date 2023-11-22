@@ -6,6 +6,7 @@ import { User } from "@clerk/nextjs/server"
 import { Divider } from "@nextui-org/react"
 import { useEffect, useState } from "react"
 import PromptDetails from "@/components/Prompts/PromptDetails/PromptDetails"
+import { stripePaymentIntent } from "@/actions/payment/paymentAction"
 
 
 const PromptDetailsPage = ({
@@ -13,11 +14,13 @@ const PromptDetailsPage = ({
     isSellerExist,
     promptData,
     relatedPrompts,
+    publishableKey
 }: {
     user: User | undefined,
     isSellerExist: boolean,
     promptData: any,
-    relatedPrompts: any
+    relatedPrompts: any,
+    publishableKey: string
 }) => {
     const [isMounted, setIsMounted] = useState(false)
 
@@ -29,6 +32,15 @@ const PromptDetailsPage = ({
 
     if (!isMounted) {
         return null
+    }
+
+    const newPaymentIntent = async ({ amount }: { amount: Number }) => {
+        await stripePaymentIntent({ amount })
+    }
+
+    if (publishableKey) {
+        const amount = promptData?.price
+        newPaymentIntent({ amount })
     }
 
     return (
