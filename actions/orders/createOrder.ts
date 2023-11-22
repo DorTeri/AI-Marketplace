@@ -20,6 +20,16 @@ export const newOrder = async ({ userId, promptId, payment_method, payment_id }:
         const order = await prisma.orders.create({
             data: newOrderData,
         })
+
+        await prisma.shops.update({
+            where: {
+                userId
+            },
+            data: {
+                totalSales: { increment: 1 }
+            }
+        })
+        
         return order
     } catch (error) {
         console.log('new order error', error)

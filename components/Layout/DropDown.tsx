@@ -6,6 +6,7 @@ import Link from "next/link"
 import { AiOutlineLogout } from 'react-icons/ai';
 import { TbSwitchVertical } from "react-icons/tb"
 import { useRouter } from "next/navigation"
+import { GrDocumentStore } from "react-icons/gr"
 
 type Props = {
     user: User | null;
@@ -50,12 +51,20 @@ const DropDown = ({ user, setOpen, handleProfile, isSellerExist }: Props) => {
                         </span>
                     </div>
                 </DropdownItem>
+                <DropdownItem>
+                    <Link href={"/my-orders"} className="flex w-full items-center">
+                        <GrDocumentStore className="text-[22px] ml-2 text-black"/>
+                        <span className={`${styles.label} text-black text-[16px] pl-2`}>
+                            My orders
+                        </span>
+                    </Link>
+                </DropdownItem>
                 <DropdownItem className={`${!isSellerExist && 'hidden'}`}>
                     <Link href={"/my-shop"} className='flex w-full items-center'>
+                        <TbSwitchVertical className="text-2xl ml-2 text-black" />
                         <span className={`${styles.label} text-black text-[16px] pl-2`}>
                             Switching to Seller
                         </span>
-                        <TbSwitchVertical className="text-2xl ml-2 text-black" />
                     </Link>
                 </DropdownItem>
                 <DropdownItem
