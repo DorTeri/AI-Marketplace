@@ -1,11 +1,10 @@
-import { getAllPrompts } from "@/actions/prompts/getAllPrompts"
 import { getUser } from "@/actions/user/getUser"
 import PromptDetailsPage from "./_page"
 
 
-const Page = async () => {
+const Page = async ({ params }: { params: any }) => {
   const data = await getUser()
-  const promptsData = await getAllPrompts()
+  
   return (
     <div>
       <PromptDetailsPage
