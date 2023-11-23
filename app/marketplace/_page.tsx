@@ -8,20 +8,24 @@ import { Divider, Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import FilterPrompts from "@/components/Prompts/FilterPrompts";
 import PromptCard from "@/components/Prompts/PromptCard";
+import { useRouter } from "next/navigation";
 
 const MarketPlaceRouter = ({
   user,
   isSellerExist,
-  promptsData
+  promptsData,
+  totalPrompts
 }: {
   user: User | undefined;
   isSellerExist: boolean;
   promptsData: any;
+  totalPrompts: any
 }) => {
   const [isMounted, setisMounted] = useState(false);
-  const [totalPrompts, setTotalPrompts] = useState<any>();
+  const [initialPage , setInitialPage] = useState(1)
+  const router = useRouter()
 
-  
+
 
   useEffect(() => {
     if (!isMounted) {
@@ -29,10 +33,19 @@ const MarketPlaceRouter = ({
     }
   }, [isMounted]);
 
+  useEffect(() => {
+    if(initialPage) {
+      router.push(`/marketplace?page=${initialPage}`)
+    }
+  }, [initialPage , router])
+
 
   if (!isMounted) {
     return null;
   }
+
+  const paginationPages = totalPrompts && Math.ceil(totalPrompts.length / 8)
+
 
   return (
     <>
@@ -50,19 +63,20 @@ const MarketPlaceRouter = ({
             </div>
             <div className="w-full flex flex-wrap mt-5">
               {promptsData && promptsData.map((item: any) => (
-                  <PromptCard prompt={item} key={item.id} />
-                ))}
+                <PromptCard prompt={item} key={item.id} />
+              ))}
             </div>
             <div className="w-full flex items-center justify-center mt-5">
               <Pagination
                 loop
                 showControls
-                total={2}
-                initialPage={1}
+                total={paginationPages}
+                initialPage={initialPage}
                 classNames={{
                   wrapper: "mx-2",
                   item: "mx-2",
                 }}
+                onChange={setInitialPage}
               />
             </div>
             <Divider className="bg-[#ffffff14] mt-5" />

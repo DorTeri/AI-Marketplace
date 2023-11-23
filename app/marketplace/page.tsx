@@ -4,10 +4,7 @@ import { getUser } from "@/actions/user/getUser";
 
 const Page = async () => {
   const data = await getUser();
-  const promptsData = await getAllPrompts()
-
-  console.log("promptsData",promptsData);
-  
+  const promptsData = await getAllPrompts()  
 
   return (
     <div>
@@ -15,6 +12,7 @@ const Page = async () => {
         user={data?.user}
         isSellerExist={data?.shop ? true : false}
         promptsData={promptsData?.prompts}
+        totalPrompts={promptsData?.totalPrompts}
       />
     </div>
   );
