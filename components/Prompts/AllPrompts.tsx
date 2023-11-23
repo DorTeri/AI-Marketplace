@@ -13,7 +13,7 @@ type PromptsDataTypes = {
 }
 
 
-const AllPrompts = ({ promptsData, isDashboard }: { promptsData: any,isDashboard:boolean }) => {
+const AllPrompts = ({ promptsData, isDashboard }: { promptsData: any,isDashboard?:boolean }) => {
 
     const columns = [
         { field: "id", headerName: "ID", flex: 0.5 },
