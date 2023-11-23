@@ -95,7 +95,6 @@ const AllPrompts = ({ promptsData }: { promptsData: any }) => {
                     <DataGrid checkboxSelection rows={rows} columns={columns} />
                 </Box>
             </Box>
-            )
         </>
     )
 }
