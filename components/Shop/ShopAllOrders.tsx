@@ -40,8 +40,6 @@ const ShopAllOrders = ({ isDashboard, ordersData }: { isDashboard: boolean, orde
     const rows: any = [];
 
     ordersData && ordersData.forEach((order: any) => {
-        console.log(order);
-
         rows.push({
             id: order.id,
             name: order?.user?.firstName + " " + order?.user?.lastName,
