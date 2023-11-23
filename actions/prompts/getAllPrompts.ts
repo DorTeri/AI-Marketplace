@@ -16,9 +16,18 @@ export async function getAllPrompts(pageNumber = 1, pageSize = 8) {
             },
             take: pageSize,
             skip: (pageNumber - 1) * pageSize,
+            orderBy: {
+                createdAt: 'desc'
+            }
         })
 
-        return prompts
+        const totalPrompts = await prisma.prompts.findMany({
+            where: {
+                status: "Live"
+            }
+        })
+
+        return { prompts, totalPrompts }
     } catch (error) {
         console.log('get All prompts error', error)
     }
