@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "@/lib/prismaDb";
 import { User, currentUser } from "@clerk/nextjs/server";
 
@@ -9,7 +11,7 @@ export const getSellerInfo = async () => {
       return;
     }
 
-    const shopWithBank = await prisma.shops.findUnique({
+    const shop = await prisma.shops.findUnique({
       where: {
         userId: user.id,
       },
@@ -21,7 +23,7 @@ export const getSellerInfo = async () => {
     const orders = await prisma.orders.findMany({
       where: {
         prompt: {
-          sellerId: shopWithBank?.userId,
+          sellerId: shop?.userId,
         },
       },
       include: {
@@ -30,13 +32,13 @@ export const getSellerInfo = async () => {
             images: true,
             reviews: true,
             promptUrl: true,
-            orders: true,
-          },
+            orders: true
+          }
         },
       },
     });
 
-    return { shop: shopWithBank, orders };
+    return { shop, orders };
   } catch (error) {
     console.log(error);
   }

@@ -19,7 +19,7 @@ model Shops {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId String @unique
-  shop Banks?
+  bank   Banks?
   withdraws withdraws[]
 }
 
@@ -92,7 +92,8 @@ model Banks {
   bank_name String
   bank_address String
   sellerId String @db.ObjectId @unique
-  shop Shops @relation(fields: [sellerId], references: [id])
+  bank     Shops  @relation(fields: [sellerId], references: [id])
+  account_holder_name String
   account_number Float
   routing_number Float
   swift_code String
