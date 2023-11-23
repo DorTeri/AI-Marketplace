@@ -4,7 +4,7 @@ import prisma from "@/lib/prismaDb"
 
 export async function getAllPrompts(pageNumber = 1, pageSize = 8) {
     try {
-        const prompts = await prisma.prompts.findMany({
+        const prompts:any = await prisma.prompts.findMany({
             include: {
                 orders: true,
                 images: true,
@@ -20,6 +20,17 @@ export async function getAllPrompts(pageNumber = 1, pageSize = 8) {
                 createdAt: 'desc'
             }
         })
+
+        if (prompts) {
+            for (const prompt of prompts) {
+                const shop = await prisma.shops.findUnique({
+                    where: {
+                        userId: prompt.sellerId,
+                    }
+                })
+                prompt.shop = shop
+            }
+        }
 
         const totalPrompts = await prisma.prompts.findMany({
             where: {

@@ -1,4 +1,3 @@
-import { getShopById } from '@/actions/shop/getShopById'
 import Ratings from '@/utils/Ratings'
 import { styles } from '@/utils/styles'
 import { Avatar, Button, Card, Divider } from '@nextui-org/react'
@@ -11,18 +10,6 @@ type Props = {
 }
 
 const PromptCard = ({ prompt }: Props) => {
-    const [shopData, setShopData] = useState<any>()
-
-    useEffect(() => {
-        if (prompt) {
-            getShopInfo()
-        }
-    }, [])
-
-    const getShopInfo = async () => {
-        const shopData = await getShopById({ shopId: prompt?.sellerId })
-        setShopData(shopData)
-    }
 
     return (
         <Card radius='lg' className='w-full md:w-[31%] 2xl:w-[23%] p-4 bg-[#130f23] m-3'>
@@ -62,8 +49,8 @@ const PromptCard = ({ prompt }: Props) => {
             <Divider className='bg-[#ffffff18] my-3' />
             <div className='w-full flex items-center justify-between'>
                 <div className="flex items-center">
-                    <Avatar src={shopData?.avatar} />
-                    <span className={`${styles.label} pl-3`}>@{shopData?.name}</span>
+                    <Avatar src={prompt?.shop?.avatar} />
+                    <span className={`${styles.label} pl-3`}>@{prompt?.shop?.name}</span>
                 </div>
                 <Ratings rating={prompt?.rating} />
             </div>
