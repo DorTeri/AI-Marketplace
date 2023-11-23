@@ -19,6 +19,8 @@ model Shops {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId String @unique
+  shop Banks?
+  withdraws withdraws[]
 }
 
 model Images {
@@ -83,4 +85,25 @@ model Prompts {
   status PromptStatus @default(Pending)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Banks {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  bank_name String
+  bank_address String
+  sellerId String @db.ObjectId @unique
+  shop Shops @relation(fields: [sellerId], references: [id])
+  account_number Float
+  routing_number Float
+  swift_code String
+}
+
+model withdraws {
+    id   String @id @default(auto()) @map("_id") @db.ObjectId
+    sellerId String @db.ObjectId @unique
+    shop Shops @relation(fields: [sellerId], references: [id])
+    amount Float
+    status String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
