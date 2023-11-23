@@ -40,7 +40,7 @@ const RoutePage = ({ user, isSellerExist }: Props) => {
 
   useEffect(() => {
     fetchPromptsData();
-  }, []);
+  }, [fetchPromptsData]);  // Add fetchPromptsData to the dependency array
 
   useEffect(() => {
     if (!isMounted) {
@@ -75,10 +75,8 @@ const RoutePage = ({ user, isSellerExist }: Props) => {
             </h1>
             <div className="w-full flex flex-wrap mt-5">
               {loading ? (
-                [...new Array(8)].map((i) => (
-                  <>
-                    <PromptCardLoader />
-                  </>
+                [...new Array(8)].map((i, index) => (
+                  <PromptCardLoader key={index} />
                 ))
               ) : (
                 <>
