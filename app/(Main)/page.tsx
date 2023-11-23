@@ -1,21 +1,18 @@
-import React from 'react'
-import RoutePage from './_page'
-import { getUser } from '@/actions/user/getUser'
-import { getAllPrompts } from '@/actions/prompts/getAllPrompts'
+import React from "react";
+import RoutePage from "./_page";
+import { getUser } from "@/actions/user/getUser";
 
 const Page = async () => {
-  const data = await getUser()
-  const promptsData = await getAllPrompts()
-
-  console.log("promptsDatass" , promptsData);
-  
-
+  const data = await getUser();
+ 
   return (
     <div>
-      <RoutePage user={JSON.parse(JSON.stringify(data?.user))}
-        isSellerExist={data?.shop ? true : false} promptsData={JSON.parse(JSON.stringify(promptsData?.prompts))} />
+      <RoutePage
+        user={data?.user}
+        isSellerExist={data?.shop ? true : false}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
