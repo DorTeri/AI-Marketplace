@@ -63,7 +63,7 @@ const PromptInformation = ({ promptData }: Props) => {
                   <div className="">
                     {promptData &&
                       promptData.reviews.map((item:any, index:number) => (
-                        <ReviewCard/>
+                        <ReviewCard key={index}/>
                       ))}
 
                       {

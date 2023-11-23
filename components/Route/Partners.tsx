@@ -47,7 +47,7 @@ const Partners = (props: Props) => {
   return (
     <div className='py-10'>
       <h1 className={`${styles.heading} font-Montserrat text-center`}>
-        Our Partner's
+      Our Partner&rsquo;s
       </h1>
       <div className='w-full flex justify-center pt-3'>
         <div className='w-[50px] h-[2px] bg-[#64ff4b]' />
