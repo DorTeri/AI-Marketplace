@@ -30,6 +30,7 @@ const RoutePage = ({ user, isSellerExist }: Props) => {
     try {
       const response = await fetch(`/api/get-prompts`);
       const data = await response.json();
+      console.log("data",data);
       setPrompts(data.prompts);
     } catch (error) {
       console.error("Failed to fetch prompts:", error);
