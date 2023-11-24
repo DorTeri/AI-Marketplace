@@ -4,6 +4,7 @@ import { parse } from "url";
 
 export async function GET(req: NextRequest) {
   try {
+    console.log('prisma', prisma)
     const { query } = parse(req.url, true);
     const pageNumber = query.page ? parseInt(query.page.toString(), 10) : 1;
 
@@ -25,6 +26,8 @@ export async function GET(req: NextRequest) {
         createdAt: "desc",
       },
     });
+
+    console.log('prompts', prompts)
 
     const totalPrompts: any = await prisma.prompts.findMany({
       where: {
@@ -57,7 +60,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ prompts, totalPrompts });
   } catch (error) {
-    console.log("get prompts error", error);
+    console.log("get prompts error111", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

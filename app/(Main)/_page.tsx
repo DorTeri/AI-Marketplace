@@ -33,6 +33,7 @@ const RoutePage = ({ user, isSellerExist }: Props) => {
       setPrompts(data.prompts);
     } catch (error) {
       console.error("Failed to fetch prompts:", error);
+      console.error("Error details:", (error as Error).message, (error as Error).stack);
     } finally {
       setLoading(false);
     }
