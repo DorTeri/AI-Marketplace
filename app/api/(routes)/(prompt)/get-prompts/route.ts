@@ -2,6 +2,8 @@ import prisma from "@/lib/prismaDb";
 import { NextRequest, NextResponse } from "next/server";
 import { parse } from "url";
 
+console.log("At the beginning of the file");
+
 export async function GET(req: NextRequest) {
   console.log("in the get prompts");
   
