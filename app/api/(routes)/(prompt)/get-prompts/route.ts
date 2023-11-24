@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { parse } from "url";
 
 export async function GET(req: NextRequest) {
+  console.log("in the get prompts");
+  
   try {
     const { query } = parse(req.url, true);
     const pageNumber = query.page ? parseInt(query.page.toString(), 10) : 1;
