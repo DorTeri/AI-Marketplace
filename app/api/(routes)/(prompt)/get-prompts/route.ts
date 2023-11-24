@@ -4,7 +4,6 @@ import { parse } from "url";
 
 export async function GET(req: NextRequest) {
   try {
-    console.log('prisma', prisma)
     const { query } = parse(req.url, true);
     const pageNumber = query.page ? parseInt(query.page.toString(), 10) : 1;
 
