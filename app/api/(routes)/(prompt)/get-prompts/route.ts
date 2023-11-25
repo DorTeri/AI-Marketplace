@@ -12,9 +12,6 @@ export async function GET(req: NextRequest) {
 
     const pageSize = 8;
 
-    console.log('pageSize', pageSize)
-    console.log('prisma', prisma)
-
     const prompts: any = await prisma.prompts.findMany({
       include: {
         orders: true,
@@ -61,10 +58,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    console.log('prompts', prompts)
-    console.log('totalPrompts', totalPrompts)
-
-    return NextResponse.json({ prompts, totalPrompts });
+    return NextResponse.json("{check}");
   } catch (error) {
     console.error("Error in GET request:", error);
 
