@@ -1,4 +1,4 @@
-import prisma from "@/lib/prismaDb";
+import { prisma, waitForConnection } from "@/lib/prismaDb";
 import { NextRequest, NextResponse } from "next/server";
 import { parse } from "url";
 
@@ -6,6 +6,7 @@ import { parse } from "url";
 export async function GET(req: NextRequest) {
 
   try {
+    await waitForConnection();
     const { query } = parse(req.url, true);
     const pageNumber = query.page ? parseInt(query.page.toString(), 10) : 1;
 

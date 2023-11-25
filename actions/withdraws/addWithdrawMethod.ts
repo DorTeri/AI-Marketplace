@@ -1,5 +1,5 @@
 "use server";
-import prisma from "@/lib/prismaDb";
+import {prisma} from "@/lib/prismaDb";
 
 type withDrawMethodData = {
   account_holder_name: string;

@@ -1,4 +1,4 @@
-import prisma from "@/lib/prismaDb";
+import {prisma} from "@/lib/prismaDb";
 import { User, currentUser } from "@clerk/nextjs/server"
 
 export async function getAllPromptsByShop() {

@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from "@/lib/prismaDb"
+import {prisma} from "@/lib/prismaDb"
 
 export async function getAllPrompts(pageNumber = 1, pageSize = 8) {
     try {

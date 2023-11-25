@@ -1,6 +1,6 @@
 "use server"
 import { User, currentUser } from "@clerk/nextjs/server"
-import prisma from "@/lib/prismaDb"
+import {prisma} from "@/lib/prismaDb"
 
 export async function getUser() {
     try {

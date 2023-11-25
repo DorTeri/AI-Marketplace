@@ -1,4 +1,4 @@
-import prisma from "@/lib/prismaDb";
+import {prisma} from "@/lib/prismaDb";
 import { clerkClient } from "@clerk/nextjs";
 
 export const getShopOrders = async ({ sellerId }: { sellerId: string }) => {

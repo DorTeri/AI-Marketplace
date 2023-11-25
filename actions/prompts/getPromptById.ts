@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from "@/lib/prismaDb"
+import {prisma} from "@/lib/prismaDb"
 
 export async function getPromptById(promptId: any) {
     try {

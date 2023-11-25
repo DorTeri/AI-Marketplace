@@ -1,5 +1,5 @@
 "use server";
-import prisma from "@/lib/prismaDb";
+import {prisma} from "@/lib/prismaDb";
 
 export const getTopSellers = async () => {
   try {
