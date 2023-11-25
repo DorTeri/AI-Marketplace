@@ -11,6 +11,9 @@ export async function GET(req: NextRequest) {
 
     const pageSize = 8;
 
+    console.log('pageSize', pageSize)
+    console.log('prisma', prisma)
+
     const prompts: any = await prisma.prompts.findMany({
       include: {
         orders: true,
