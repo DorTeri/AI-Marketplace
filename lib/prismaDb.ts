@@ -18,6 +18,6 @@ console.log('process.env.NODE_ENV', process.env.NODE_ENV);
     }
 })();
 
-if (process.env.NODE_ENV === "production") global.prismadb = prisma;
+// if (process.env.NODE_ENV === "production") global.prismadb = prisma;
 
 export default prisma;
