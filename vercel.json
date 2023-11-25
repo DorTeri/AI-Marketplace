@@ -14,8 +14,8 @@
         "STRIPE_SECRET_KEY" : "sk_test_51OFGBdKF4sMGfa3FPzRuSSZiLtWsQvN3r6EYt0K4lJrgINekbHeAwlvQXctvfOzwHlDQ0kSXmlHbIbmaqoVXHwmg00TiDD4bR2" 
     },
     "functions": {
-        "api/get-prompts": {
-          "maxDuration": 40
-        }
+      "api/get-prompts/route": {
+        "maxDuration": 40
       }
+    }
   }
