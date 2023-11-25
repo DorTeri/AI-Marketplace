@@ -14,7 +14,6 @@ import Footer from "@/components/Layout/Footer";
 import { Divider } from "@nextui-org/react";
 import { User } from "@clerk/nextjs/server";
 import PromptCardLoader from "@/utils/PromptCardLoader";
-import axios from "axios";
 
 type Props = {
   user: User | undefined;
@@ -29,7 +28,7 @@ const RoutePage = ({ user, isSellerExist }: Props) => {
   const fetchPromptsData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/get-prompts');
+      const response = await fetch('/api/get-prompts');
       const data = await response.json();
       setPrompts(data.prompts);
     } catch (error) {
