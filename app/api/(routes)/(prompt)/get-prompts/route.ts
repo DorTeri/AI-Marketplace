@@ -58,6 +58,7 @@ export async function GET(req: NextRequest) {
     //   }
     // }
 
+    console.log("Sending response:", {prompts});
     return NextResponse.json({prompts });
   } catch (error) {
     console.error("Error in GET request:", error);
