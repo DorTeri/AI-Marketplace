@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = "mongodb+srv://dortayari:OvR7MwmsmLvwpEIb@cluster0.bxcvyqy.mongodb.net/prompts-marketplace"
+  url      = env("DATABASE_URL")
 }
 
 model Shops {
