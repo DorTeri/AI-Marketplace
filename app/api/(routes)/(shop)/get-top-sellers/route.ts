@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prismaDb";
+import {prisma} from "@/lib/prismaDb";
 
 export async function GET(req: NextRequest) {
   try {
@@ -12,7 +12,6 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(sellers);
   } catch (error) {
-    console.log("load user error", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    console.log("GET error", error);
   }
 }

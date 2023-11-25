@@ -4,7 +4,6 @@ import {prisma} from "@/lib/prismaDb";
 export const getTopSellers = async () => {
   try {
     const sellers = await prisma.shops.findMany({
-      take: 4,  
       orderBy: {
         allProducts: 'desc',
       },
