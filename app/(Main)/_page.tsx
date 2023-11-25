@@ -30,12 +30,10 @@ const RoutePage = ({ user, isSellerExist }: Props) => {
     setLoading(true);
     try {
       const response = await axios.get('/api/get-prompts');
-      console.log("response", response);
-      // const data = await response.json();
-      // setPrompts(data.prompts);
+      const data = await response.json();
+      setPrompts(data.prompts);
     } catch (error) {
       console.error("Failed to fetch prompts:", error);
-      console.error("Error details:", (error as Error).message, (error as Error).stack);
     } finally {
       setLoading(false);
     }
