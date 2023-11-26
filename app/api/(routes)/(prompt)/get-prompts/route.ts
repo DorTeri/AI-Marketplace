@@ -57,7 +57,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({prompts });
+    return NextResponse.json({ prompts, totalPrompts });
   } catch (error) {
     console.error("Error in GET request:", error);
 

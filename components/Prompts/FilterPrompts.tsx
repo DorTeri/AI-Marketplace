@@ -27,9 +27,8 @@ const FilterPrompt = ({ totalPrompts, setPrompts }: Props) => {
     <div className="w-full flex rounded shadow my-5">
       {categories.map((i, index) => (
         <Button
-          className={`h-[32px] px-3 rounded-2xl mr-8 ${
-            selected === i ? "bg-[#3ab05b]" : "bg-[#2251ac]"
-          }`}
+          className={`h-[32px] px-3 rounded-2xl mr-8 ${selected === i ? "bg-[#3ab05b]" : "bg-[#2251ac]"
+            }`}
           key={index}
           onClick={(e) => handleFilter(i)}
         >
