@@ -46,7 +46,7 @@ const AllPrompts = ({ promptsData, isDashboard }: { promptsData: any,isDashboard
             <Box m="20px">
                 <Box
                     m="40px 0 0 0"
-                    height={"90vh"}
+                    height={"35vh"}
                     sx={{
                         "& .MuiDataGrid-root": {
                             border: "none",
