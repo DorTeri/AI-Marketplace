@@ -6,6 +6,8 @@ import { Button, Input, Textarea } from "@nextui-org/react"
 import axios from "axios"
 import { useState } from "react"
 import toast from "react-hot-toast"
+import { redirect } from "next/navigation";
+
 
 type Props = {}
 
@@ -41,9 +43,9 @@ const Page = (props: Props) => {
                     shopProductsType: "",
                     avatar: "",
                 });
-            }).catch((error) => {
+            }).then(() => redirect("/")).catch((error) => {
                 setLoading(false)
-                toast.error(error.response.data);
+                toast.error("You already have one shop");
                 setShopData({
                     name: "",
                     description: "",
