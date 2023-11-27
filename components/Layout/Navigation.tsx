@@ -18,14 +18,14 @@ const navItems = [
     title: "Marketplace",
     href: "/marketplace",
   },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
-  {
-    title: "Policy",
-    href: "/policy",
-  },
+  // {
+  //   title: "Contact",
+  //   href: "/contact",
+  // },
+  // {
+  //   title: "Policy",
+  //   href: "/policy",
+  // },
 ];
 
 const Navigation = ({ activeItem }: Props) => {
