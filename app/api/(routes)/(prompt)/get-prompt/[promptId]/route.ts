@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {prisma} from "@/lib/prismaDb";
+import { prisma } from "@/lib/prismaDb";
 import { clerkClient } from "@clerk/nextjs";
 
 export async function GET(req: NextRequest, { params }: { params: any }) {
