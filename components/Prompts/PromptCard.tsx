@@ -13,7 +13,7 @@ const PromptCard = ({ prompt }: Props) => {
   return (
     <Card
       radius="lg"
-      className="w-full md:w-[31%] 2xl:w-[23%] max-h-[410px] p-4 bg-[#130f23] m-3"
+      className="w-full md:w-[40%] 2xl:w-[23%] max-h-[410px] p-4 bg-[#130f23] m-3"
     >
       <div className="relative">
         <Image
@@ -63,7 +63,7 @@ const PromptCard = ({ prompt }: Props) => {
       <div className="w-full flex items-center justify-between">
         <div className="flex items-center">
           <Avatar src={prompt?.shop?.avatar} />
-          <span className={`${styles.label} pl-3`}>@{prompt?.shop?.name}</span>
+          <span className={`${styles.label} pl-3`}>@{prompt?.shop?.name.length > 9 ? `${prompt?.shop?.name.slice(0,6)}..` : prompt?.shop?.name}</span>
         </div>
         <Ratings rating={prompt?.rating} />
       </div>
