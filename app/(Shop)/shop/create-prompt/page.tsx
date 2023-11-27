@@ -9,7 +9,7 @@ const Page = (props: Props) => {
             <div className="h-screen sticky top-0 left-0 z-20 flex p-2 bg-[#111C42] md:w-[32%] 2xl:w-[17%]">
                 <ShopSidebar active={1}/>
             </div>
-            <div className="md:w-[80%] 2xl:w-[83%]">
+            <div className="md:w-[68%] 2xl:w-[83%]">
                 <UploadPrompt />
             </div>
         </div>
