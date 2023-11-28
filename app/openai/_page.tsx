@@ -151,7 +151,7 @@ const OpenaiImageGenerator = ({
                             className='m-auto'
                         />
                         <div className="mt-4 flex justify-center">
-                            <a href={imageUrl?.src} download="generated_image.png">
+                            <a href={imageUrl} download="generated_image.png">
                                 <Button disabled={!imageUrl || imageUrl === defaultImage} variant="bordered">
                                     Download image
                                 </Button>
