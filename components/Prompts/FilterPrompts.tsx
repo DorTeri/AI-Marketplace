@@ -14,6 +14,7 @@ const FilterPrompt = ({ totalPrompts, setPrompts }: Props) => {
   const [selected, setSelected] = useState("All");
 
   const handleFilter = (e: any) => {
+    if(e === "Journey") e = "Midjourney"
     setSelected(e);
     if (e === "All") {
       setPrompts(totalPrompts);
