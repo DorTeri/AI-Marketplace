@@ -39,6 +39,7 @@ const OpenaiImageGenerator = ({
     const generateImage = async (e: React.MouseEvent) => {
         e.preventDefault()
         setIsLoading(true)
+        if (!prompt) return
 
         try {
             const openai = new OpenAI({
