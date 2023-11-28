@@ -25,7 +25,7 @@ const OpenaiImageGenerator = ({
 }) => {
 
     const [isMounted, setisMounted] = useState(false);
-    const [imageUrl, setImageUrl] = useState(defaultImage);
+    const [imageUrl, setImageUrl] = useState<any>();
     const [prompt, setPrompt] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
@@ -35,6 +35,12 @@ const OpenaiImageGenerator = ({
             setisMounted(true);
         }
     }, [isMounted]);
+
+    useEffect(() => {
+        if(defaultImage) {
+            setImageUrl(defaultImage)
+        }
+    }, [])
 
     const generateImage = async (e: React.MouseEvent) => {
         e.preventDefault()
@@ -72,7 +78,7 @@ const OpenaiImageGenerator = ({
     };
 
 
-    if (!isMounted) {
+    if (!isMounted || !imageUrl) {
         return null;
     }
 
