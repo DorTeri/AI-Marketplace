@@ -4,7 +4,23 @@ const nextConfig = {
         serverActions: true
     },
     images: {
-        domains: ["pixner.net", "res.cloudinary.com" , "oaidalleapiprodscus.blob.core.windows.net"],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                pathname: '**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'pixner.net',
+                pathname: '**',
+            },
+            {
+                protocol: 'https',
+                hostname: "oaidalleapiprodscus.blob.core.windows.net",
+                pathname: '**',
+            }
+        ],
     },
     swcMinify: true,
 };
