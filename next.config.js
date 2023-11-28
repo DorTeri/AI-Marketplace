@@ -4,7 +4,7 @@ const nextConfig = {
         serverActions: true
     },
     images: {
-        domains: ["pixner.net", "res.cloudinary.com"],
+        domains: ["pixner.net", "res.cloudinary.com" , "oaidalleapiprodscus.blob.core.windows.net"],
     },
     swcMinify: true,
 };

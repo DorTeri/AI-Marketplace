@@ -3,6 +3,7 @@ import { Button, Chip } from '@nextui-org/react'
 import Image from 'next/image'
 import React from 'react'
 import about from '@/public/Assets/about.png'
+import Link from "next/link";
 
 type Props = {}
 
@@ -21,9 +22,10 @@ const About = (props: Props) => {
                     realm of digital art and design. These cutting-edge tools leverage
                     advanced.
                 </p>
-                <Button className={`${styles.button} bg-[#2551b0] font-[500] h-[45px]`}>
-                    Visit Shop
-                </Button>
+                <Link href={"/openai"} className={`${styles.button} bg-[#2551b0] !font-[500] h-[45px] !p-3`}
+                >
+                    Make your AI image
+                </Link>
             </div>
             <div className="col-span-1 my-10 md:mt-[unset]">
                 <Image 

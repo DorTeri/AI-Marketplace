@@ -27,11 +27,11 @@ const Footer = (props: Props) => {
                                 Marketplace
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link href={"/contact"} className={`${styles.label} hover:text-[#64ff4b] duration-200 transition px-4`}>
                                 Contact Us
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
