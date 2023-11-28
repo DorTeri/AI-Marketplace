@@ -3,7 +3,7 @@ import { styles } from "@/utils/styles";
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
 
-const categories = ["All", "Chatgpt", "Midjourney", "Bard", "Dalle"];
+const categories = ["All", "Chatgpt", "Journey", "Bard", "Dalle"];
 
 type Props = {
   totalPrompts: any;
@@ -24,7 +24,7 @@ const FilterPrompt = ({ totalPrompts, setPrompts }: Props) => {
   };
 
   return (
-    <div className="w-full flex rounded shadow my-5">
+    <div className="w-full flex rounded shadow my-5 overflow-auto">
       {categories.map((i, index) => (
         <Button
           className={`h-[32px] px-3 rounded-2xl mr-8 ${selected === i ? "bg-[#3ab05b]" : "bg-[#2251ac]"
