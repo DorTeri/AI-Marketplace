@@ -1,7 +1,7 @@
 import OpenaiImageGenerator from './_page'
 import { getUser } from "@/actions/user/getUser";
 
-const page = async () => {
+const Page = async () => {
     const data = await getUser();
     const apiKey = process.env.OPENAI_API_KEY
     
@@ -17,4 +17,4 @@ const page = async () => {
     )
 }
 
-export default page
+export default Page

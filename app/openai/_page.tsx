@@ -66,16 +66,16 @@ const OpenaiImageGenerator = ({
         }
     }
 
-    // const downloadTextFile = () => {
-    //     const textToSave = prompt;
-    //     const blob = new Blob([textToSave], { type: 'text/plain' });
-    //     const link = document.createElement('a');
-    //     link.href = URL.createObjectURL(blob);
-    //     link.download = 'prompt.txt';
-    //     document.body.appendChild(link);
-    //     link.click();
-    //     document.body.removeChild(link);
-    // };
+    const downloadTextFile = () => {
+        const textToSave = prompt;
+        const blob = new Blob([textToSave], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'prompt.txt';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
 
     if (!isMounted || !imageUrl) {
@@ -162,9 +162,9 @@ const OpenaiImageGenerator = ({
                                     Download image
                                 </Button>
                             </a>
-                            {/* <Button onClick={downloadTextFile} disabled={!prompt || imageUrl === defaultImage} variant="bordered" className="ml-2">
+                            <Button onClick={downloadTextFile} disabled={!prompt || imageUrl === defaultImage} variant="bordered" className="ml-2">
                                 Download prompt
-                            </Button> */}
+                            </Button>
                         </div>
                     </div>
                 </div>
