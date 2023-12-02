@@ -18,10 +18,10 @@ const navItems = [
     title: "Marketplace",
     href: "/marketplace",
   },
-  {
-    title: "OpenAi",
-    href: "/openai",
-  },
+  // {
+  //   title: "OpenAi",
+  //   href: "/openai",
+  // },
   // {
   //   title: "Policy",
   //   href: "/policy",
